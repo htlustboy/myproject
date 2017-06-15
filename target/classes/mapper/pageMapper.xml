@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.myproject.dao.PageMapper">
+	
+	<resultMap type="com.myproject.model.PageEntity" id="pageMap">
+		<id property="id" column="id"/>
+		<result property="name" column="name"/>
+		<result property="date" column="date"/>
+		<result property="number" column="number"/>
+	</resultMap>
+	
+	<select id="getCount" resultType="int">
+		select count(*) from page
+	</select>
+	
+	<select id="getPageList" resultMap="pageMap">
+		select t.id,t.name,t.date,t.number from page t
+		where 1=1 limit ${start},${pager.pageSize}
+	</select>
+</mapper>

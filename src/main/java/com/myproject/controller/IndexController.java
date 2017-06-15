@@ -2,23 +2,15 @@ package com.myproject.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
-@RequestMapping("/index")
+@SessionAttributes("base")
 public class IndexController {
 	
-	@RequestMapping("/list")
-	public String list(){
+	@RequestMapping("/index")
+	public String index(){
 		return "index";
 	}
 	
-	@RequestMapping("/page")
-	public String page(){
-		return "page";
-	}
-	
-	@RequestMapping("/code")
-	public String code(){
-		return "code";
-	}
 }

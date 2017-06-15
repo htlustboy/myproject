@@ -8,8 +8,7 @@
 <title>java知识库</title>
 </head>
 <body>
-	<h4><a href="${base }/index/page">前端</a></h4>
-	<br>
-	<h4><a href="${base }/index/code">后台</a></h4>
+	<h4><a href="${ base}/jdbc/list">数据库知识...</a></h4>
+	<h4><a href="${ base}/page/list">数据分页...</a></h4>
 </body>
 </html>

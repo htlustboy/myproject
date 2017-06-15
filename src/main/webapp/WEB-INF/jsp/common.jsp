@@ -1,7 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%
-	String base = request.getContextPath();
-%>
-
-<script type="text/javascript" src="/scripts/jquery.js"></script>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
+<%@ taglib prefix="from" uri="http://www.springframework.org/tags/form" %>
+<c:set var="base" value="${pageContext.request.contextPath }"></c:set>
+<script type="text/javascript" src="${pageContext.request.contextPath }/scripts/jquery.js"></script>

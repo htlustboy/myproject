@@ -16,7 +16,7 @@ public class Application {
 		SpringApplication.run(Application.class, args);
 		
 		logger.info("程序启动完毕~~~~~~~~~~~~~~~~");
-		logger.info("项目启动路径：localhost:8090/index/list");
+		logger.info("项目启动路径：localhost:8090/index");
 		
 	}
 }
