@@ -22,8 +22,9 @@ public class PageService {
 		int totalItems = pageMapper.getCount();
 		pager.setTotalItems(totalItems);
 		pager.setTotalPage();
-		pager.isHasNext(pager.getPageNo());
-		pager.isHasPrev(pager.getPageNo());
+		if(pager.getPageNo()>pager.getTotalPage()){
+			pager.setPageNo(pager.getTotalPage());
+		}
 		int start = (pager.getPageNo()-1)*pager.getPageSize();
 		List<PageEntity> list =  pageMapper.getPageList(pager,start);
 		pager.setResult(list);

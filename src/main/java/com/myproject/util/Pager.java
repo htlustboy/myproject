@@ -15,6 +15,7 @@ public class Pager {
 	private int totalPage;
 	private List<?> result;
 	
+	
 	/**
 	 * 获取每页显示的记录数
 	 * @return
@@ -79,8 +80,7 @@ public class Pager {
 	 * 设置当前的页数
 	 * @param pageNoStr
 	 */
-	public void setPageNo(String pageNoStr){
-		int pageNo = Integer.parseInt(pageNoStr);
+	public void setPageNo(int pageNo){
 		if(pageNo<=1 || pageNo>getTotalPage()){
 			this.pageNo = 1;
 		}else{
@@ -105,51 +105,6 @@ public class Pager {
 	}
 	
 	/**
-	 * 是否有下一页
-	 * @return
-	 */
-	public boolean isHasNext(int pageNo){
-		if(pageNo < getTotalPage()){
-			return true;
-		}
-		return false;
-	}
-	
-	/**
-	 * 是否有上一页
-	 * @return
-	 */
-	public boolean isHasPrev(int pageNo){
-		if(pageNo>1){
-			return true;
-		}
-		return false;
-	}
-	
-	/**
-	 * 跳转到下一页
-	 * @return
-	 */
-	public int doNext(int pageNo){
-		if(isHasNext(pageNo)){
-			return pageNo+1;
-		}
-		return pageNo;
-	}
-	
-	/**
-	 * 跳转到上一页
-	 * @param pageNo
-	 * @return
-	 */
-	public int doPrev(int pageNo){
-		if (isHasPrev(pageNo)) {
-			return pageNo-1;
-		}
-		return pageNo;
-	}
-	
-	/**
 	 * 首页
 	 * @return
 	 */
@@ -165,15 +120,19 @@ public class Pager {
 		return getTotalPage();
 	}
 	
+	
 	public Pager() {
 		
 	}
 	
-	public static void main(String[] args) {
-		Pager pager = new Pager();
-		System.out.println(pager.getPageNo());
-		System.out.println(pager.getPageSize());
-		System.out.println(pager.getTotalPage());
-		System.out.println(pager.getTotalItems());
+	public Pager(String pageNoStr){
+		if(pageNoStr!=null){
+			try {
+				this.pageNo=Integer.parseInt(pageNoStr);
+			} catch (Exception e) {
+				this.pageNo=1;
+			}
+		}
 	}
+	
 }

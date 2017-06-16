@@ -8,8 +8,8 @@
 <title>数据分页</title>
 </head>
 <body>
-<span>-----${pager.result }</span>
 	<form>
+		<c:if test="${pager!=null}">
 		<table cellpadding="10" cellspacing="0" border="1 solid">
 			<thead>
 				<th>序列号</th>
@@ -17,27 +17,28 @@
 				<th>时间</th>
 				<th>小数</th>
 			</thead>
-			<c:if test="${pager!=null}" var="pager">
-<%-- 				<c:set var="list" value="${pager.result }"></c:set> --%>
-<%-- 				<c:forEach items="${list}" var="list"> --%>
-<!-- 					<tr> -->
-<%-- 						<td>${list.id }</td> --%>
-<%-- 						<td>${list.name }</td> --%>
-<%-- 						<td>${list.date }</td> --%>
-<%-- 						<td>${list.number }</td> --%>
-<!-- 					</tr> -->
-<%-- 				</c:forEach> --%>
-<%-- 				(共<span>${pager.totalPage }</span>页, --%>
-<%-- 				共<span>${pager.totalItems }</span>条记录, --%>
-<%-- 				当前<span>${pager.pageNo }</span>页) --%>
-<%-- 				<c:if test="${pager.isHasPrev }"> --%>
-<!-- 					<a href="#">上一页</a> -->
-<%-- 				</c:if> --%>
-<%-- 				<c:if test="${pager.isHasnext }"> --%>
-<!-- 					<a href="#">下一页</a> -->
-<%-- 				</c:if> --%>
-			</c:if>
+			<c:forEach items="${pager.result}" var="list"> 
+				<tr>
+					<td>${list.id }</td>
+					<td>${list.name }</td>
+					<td>${list.date }</td>
+					<td>${list.number }</td>
+				</tr>
+			</c:forEach>
 		</table>
+		<br>
+		共<span>${pager.totalPage }</span>页,
+		共<span>${pager.totalItems }</span>条记录,
+		当前第<span>${pager.pageNo }</span>页
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<c:if test="${pager.pageNo>1 }">
+			<a href="${base }/page/list?pageNo=${pager.pageNo-1}">上一页</a>
+		</c:if>
+		<c:if test="${pager.pageNo<pager.totalPage }">
+			<a href="${base }/page/list?pageNo=${pager.pageNo+1}">下一页</a>
+		</c:if>
+		</c:if>
 	</form>
 </body>
 </html>
