@@ -13,4 +13,9 @@ public class IndexController {
 		return "index";
 	}
 	
+	@RequestMapping("/toerror")
+	public String error(){
+		return "toerror";
+	}
+	
 }

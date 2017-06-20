@@ -10,6 +10,8 @@
 <body>
 	<h4><a href="${ base}/jdbc/list">数据库知识...</a></h4>
 	<h4><a href="${ base}/page/list?pageNo=1">数据分页...</a></h4>
-	<h4><a href="${ base}/page/xml/list">xml配置文件读取...</a></h4>
+	<h4><a href="${ base}/file/list">文件上传下载...</a></h4>
+	<h4><a href="${ base}/xml/list">xml配置文件读取...</a></h4>
+	<h4><a href="${ base}/toerror">error</a></h4>
 </body>
 </html>

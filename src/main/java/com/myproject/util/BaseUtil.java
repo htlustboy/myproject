@@ -13,6 +13,7 @@ public class BaseUtil {
 	
 	private static final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 	
+	
 	/**
 	 * 判断一个字符串不为空
 	 * @param str
@@ -91,6 +92,24 @@ public class BaseUtil {
 			}
 			return result;
 		}
+	}
+	
+	/**
+	 * 判断数组中是否包含某个元素
+	 * @param array
+	 * @param obj
+	 * @return
+	 */
+	public static boolean array2contain(String[] array,String obj){
+		if(array==null || array.length==0){
+			return false;
+		}
+		for (int i = 0; i < array.length; i++) {
+			if(array[i].equals(obj)){
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	/**
@@ -186,5 +205,27 @@ public class BaseUtil {
 		}
 		return "";
 	}
+	
+	/**
+	 * 文件路径转换，将'\'转换成'\\'
+	 * @return
+	 */
+	public static String pathReplace(String path){
+		if(path!=null && path.length()>0){
+			return path.replaceAll("\\\\", "\\\\\\\\");
+		}
+		return path;
+	}
+	
+	/**
+	 * 文件路径转换，将'\\'转换成'/'
+	 * @param path
+	 * @return
+	 */
+	public static String pathReplace2(String path){
+		if(path!=null && path.length()>0)
+			return path.replaceAll("\\\\\\\\", "/");
+		return path;
+	}	
 	
 }
