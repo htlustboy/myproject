@@ -10,13 +10,18 @@ import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
 import org.springframework.core.io.DefaultResourceLoader;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
+import redis.clients.jedis.JedisPool;
+import redis.clients.jedis.JedisPoolConfig;
+
 import com.alibaba.druid.pool.DruidDataSourceFactory;
+import com.myproject.common.RedisClient;
 
 @Configuration
 //指定mapper.xml对应的接口所在的包
@@ -62,4 +67,28 @@ public class MyBatisConfig {
 		logger.info("mybatis配置项启动完毕:"+sqlSessionFactoryBean);
 		return sqlSessionFactoryBean.getObject();
 	}
+	
+	@Bean(name="jedisPool")
+	public JedisPool getJedisPool(){
+		JedisPoolConfig config = new JedisPoolConfig();
+		config.setMaxTotal(Integer.parseInt(environment.getProperty("redis.maxtotal")));
+		config.setMaxIdle(Integer.parseInt(environment.getProperty("redis.maxidle")));
+		config.setMaxWaitMillis(Integer.parseInt(environment.getProperty("redis.maxwaitmillis")));
+		String host = environment.getProperty("redis.address");
+		int port = Integer.parseInt(environment.getProperty("redis.port"));
+		logger.info("redis最大连接数："+config.getMaxTotal());
+		logger.info("redis最大空闲数："+config.getMaxIdle());
+		logger.info("redis最大等待时间："+config.getMaxWaitMillis());
+		return new JedisPool(config, host, port, 3000);
+	}
+	
+	@Bean
+	@ConditionalOnMissingBean(RedisClient.class)
+	public RedisClient redisClient(JedisPool pool){
+		RedisClient redisClient = new RedisClient();
+		redisClient.setJedisPool(pool);
+		logger.info("++++++++++++++++++++++++++++:"+redisClient.getJedisPool());
+		return redisClient;
+	}
+	
 }

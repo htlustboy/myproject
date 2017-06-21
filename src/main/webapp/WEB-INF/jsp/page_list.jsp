@@ -8,6 +8,7 @@
 <title>数据分页</title>
 </head>
 <body>
+	<a href="${base }/return">返回首页</a>
 	<form>
 		<c:if test="${pager!=null}">
 		<table cellpadding="10" cellspacing="0" border="1 solid">

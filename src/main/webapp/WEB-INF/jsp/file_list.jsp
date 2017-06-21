@@ -13,6 +13,7 @@
 		备注：<input type="text" name="memo"><br>
 		<input type="submit" value="上传">&nbsp;&nbsp;<span id="msg" style="color: red">${message}</span><br>
 		<a href="${base }/file/download">查看我的下载列表</a>
+		<a href="${base }/return">返回首页</a>
 	</form>
 	<form id="form">
 		<input type="hidden" name="path"/>

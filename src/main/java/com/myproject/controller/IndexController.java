@@ -18,4 +18,9 @@ public class IndexController {
 		return "toerror";
 	}
 	
+	@RequestMapping("/return")
+	public String goback(){
+		return "redirect:/index";
+	}
+	
 }

@@ -23,7 +23,7 @@ public class BaseHandlerInterceptor implements HandlerInterceptor{
 			Object obj, ModelAndView modelAndView) throws Exception {
 		if(request.getServletPath().endsWith(".json")){
 			//如果是ajax的请求，则在控制台中打印出返回的结果
-			logger.info(response.getStatus()+":"+response.toString());
+			logger.info("=========="+response.getStatus()+":"+response.toString());
 		}
 	}
 

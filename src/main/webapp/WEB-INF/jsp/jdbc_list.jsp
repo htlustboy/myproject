@@ -9,11 +9,13 @@
 </head>
 <body>
 	<button onclick="contactDbByJdbc()">使用jdbc连接数据库</button>
+	<a href="${base }/return">返回首页</a>
 	<br><br>
 	<button onclick="add()">增加记录</button>
 	<button onclick="query()">查询记录</button>
 	<button onclick="update()">修改记录</button>
 	<button onclick="deleteAll()">清空数据表</button>
+	<button onclick="clear()" id="clear">清空日志</button>
 	<br><br>
 	<textarea style="width: 500px;height: 300px;font-size: 18px;" readonly="readonly" id="console" wrap="physical"></textarea>
 	
@@ -101,5 +103,10 @@
 			}
 		});
 	}
+	
+	$("#clear").click(function(){
+		html = "";
+		$("#console").html(html);
+	});
 </script>
 </html>

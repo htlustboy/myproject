@@ -12,6 +12,8 @@
 	<h4><a href="${ base}/page/list?pageNo=1">数据分页...</a></h4>
 	<h4><a href="${ base}/file/list">文件上传下载...</a></h4>
 	<h4><a href="${ base}/xml/list">xml配置文件读取...</a></h4>
+	<h4><a href="${ base}/redis/list">redis...</a></h4>
+	<h4><a href="${ base}/i18n/list?language=1">国际化</a></h4>
 	<h4><a href="${ base}/toerror">error</a></h4>
 </body>
 </html>
