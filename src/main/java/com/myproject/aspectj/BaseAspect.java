@@ -22,10 +22,10 @@ public class BaseAspect {
 	public void pointCut2(){  }
 	
 	@Around("pointCut()")
-	public Object around(ProceedingJoinPoint pointJoinPoint) throws Throwable{
-		logger.info("执行"+pointJoinPoint.getSignature()+"方法...");
+	public Object around(ProceedingJoinPoint proceedingJoinPoint) throws Throwable{
+		logger.info("执行"+proceedingJoinPoint.getSignature()+"方法...");
 		try {
-			Object result = pointJoinPoint.proceed();
+			Object result = proceedingJoinPoint.proceed();
 			return result;
 		} catch (Exception e) {
 			logger.info("目标方法发生错误..."+e.getMessage());

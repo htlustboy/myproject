@@ -77,6 +77,9 @@ public class BaseUtil {
 	 * @return
 	 */
 	public static String[] array2arrays(String[] array1,String[] array2){
+		if(array1==null && array2==null){
+			return null;
+		}
 		if(array1==null || array1.length==0){
 			return array2;
 		}

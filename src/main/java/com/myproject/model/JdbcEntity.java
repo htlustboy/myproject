@@ -24,7 +24,7 @@ public class JdbcEntity {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public boolean isStatus() {
+	public boolean getStatus() {
 		return status;
 	}
 	public void setStatus(boolean status) {
@@ -35,6 +35,17 @@ public class JdbcEntity {
 	}
 	public void setCreateTime(Date createTime) {
 		this.createTime = createTime;
+	}
+	public JdbcEntity(int id, String name, boolean status, Date createTime) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.status = status;
+		this.createTime = createTime;
+	}
+	
+	public JdbcEntity() {
+		// TODO Auto-generated constructor stub
 	}
 	
 }

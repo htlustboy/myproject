@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<config>
-	<permission>false</permission>
-	<user>
-		<username>hutao</username>
-		<password>2</password>
-	</user>
-	<list>txt,xml,pdf,word</list>
-</config>
