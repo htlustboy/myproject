@@ -4,6 +4,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import org.apache.shiro.crypto.hash.SimpleHash;
+
 /**
  * 字符串工具类
  * @author hutao
@@ -230,5 +232,20 @@ public class BaseUtil {
 			return path.replaceAll("\\\\\\\\", "/");
 		return path;
 	}	
+	
+	/**
+	 * 密码加密
+	 * @param password
+	 */
+	public static String password2Hex(String userName,String password){
+		String hashAlgorithmName = "MD5"; //加密方式
+		int hashIterations = 1024; //加密次数
+		Object salt = userName;
+		return new SimpleHash(hashAlgorithmName, password, salt,hashIterations).toHex();
+	}
+	
+	public static void main(String[] args) {
+		System.out.println(password2Hex("hutao", "123456"));//f7c3aea7e18076502c9e29fc4d4d16f9
+	}
 	
 }

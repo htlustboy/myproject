@@ -14,6 +14,7 @@
 	<h4><a href="${ base}/xml/list">xml配置文件读取...</a></h4>
 	<h4><a href="${ base}/redis/list">redis...</a></h4>
 	<h4><a href="${ base}/i18n/list?language=1">国际化</a></h4>
+	<h4><a href="${ base}/shiro/list">shiro配置</a></h4>
 	<h4><a href="${ base}/toerror">error</a></h4>
 </body>
 </html>
