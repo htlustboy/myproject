@@ -53,7 +53,7 @@ public class ShiroController {
 		try {
 			currentUser.login(token);
 		} catch (Exception e) {
-			model.addAttribute("message", e.getMessage());
+			model.addAttribute("message", "认证失败！");
 			return "toerror";
 		}
 		return "success";
