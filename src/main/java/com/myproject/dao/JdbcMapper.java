@@ -1,6 +1,8 @@
 package com.myproject.dao;
 
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 
@@ -16,4 +18,6 @@ public interface JdbcMapper {
 	int update();
 	
 	int deleteAll();
+	
+	List<JdbcEntity> getAll();
 }

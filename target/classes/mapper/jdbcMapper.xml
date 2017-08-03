@@ -26,4 +26,8 @@
 	<delete id="deleteAll">
 		delete from t_jdbc 
 	</delete>
+	
+	<select id="getAll" resultMap="jdbcMap">
+		select * from t_jdbc
+	</select>
 </mapper>

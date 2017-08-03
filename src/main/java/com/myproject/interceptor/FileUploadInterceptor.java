@@ -2,9 +2,8 @@ package com.myproject.interceptor;
 
 
 import java.lang.reflect.Method;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Map.Entry;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -54,41 +53,38 @@ public class FileUploadInterceptor extends HandlerInterceptorAdapter implements 
 			Method method = handlerMethod.getMethod();
 			FormData annotation = method.getAnnotation(FormData.class);
 			if(annotation!=null){
-				if(repeatDataVaildator(request)){
-					logger.warn("表单重复提交了，上传失败");
-					return false;
-				}else{
-					return true;
+				boolean need2SaveSession = annotation.save();
+				if(need2SaveSession){
+					request.getSession(false).setAttribute("token", UUID.randomUUID().toString().replaceAll("-",""));
 				}
 			}
-			return true;
-		}else{
-			return true;
-		}
-		
-	}
-
-	/**
-	 * 验证同一个url数据是否相同提交，相同则返回false
-	 * @param request
-	 * @return
-	 */
-	private boolean repeatDataVaildator(HttpServletRequest request) {
-		String url = request.getRequestURL().toString();
-		Map<String, String> map = new HashMap<String,String>();
-		map.put(url, request.getParameterMap().toString());
-		Object token = request.getSession().getAttribute("token");
-		if(token==null){
-			request.getSession().setAttribute("token", map.toString());
-			return false;
-		}else{
-			if(token.toString().equals(map.toString())){
-				return true;
-			}else{
-				request.getSession().setAttribute("token",  map.toString());
-				return false;
+			boolean need2RemoveSession = annotation.remove();
+			if(need2RemoveSession){
+				if(isRepearSubmit(request)){
+					response.sendRedirect("/toerror");
+					return false;
+				}
+				request.getSession(false).removeAttribute("token");
 			}
+			return true;
+		}else{
+			return true;
 		}
 	}
-
+	
+	
+	private boolean isRepearSubmit(HttpServletRequest request){
+		String token = (String)request.getSession(false).getAttribute("token");
+		if(token==null){
+			return true;
+		}
+		String clientToken = request.getParameter("token");
+		if(clientToken==null){
+			return true;
+		}
+		if(!token.equals(clientToken)){
+			return true;
+		}
+		return false;
+	}
 }

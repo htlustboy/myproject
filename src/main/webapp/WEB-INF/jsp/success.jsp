@@ -7,7 +7,8 @@
 <title>成功页面</title>
 </head>
 <body>
-	<h4 style="color: green">${message }</h4>
-	<a href="${pageContext.request.contextPath }/shiro/logout">退出</a>
+	<h4 style="color: green">${message }</h4><br>
+	<a href="${pageContext.request.contextPath }/shiro/logout">退出</a><br>
+	<a href="${base }/return">返回首页</a>
 </body>
 </html>

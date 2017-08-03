@@ -9,6 +9,7 @@
 </head>
 <body>
 	<form action="${base }/file/upload" method="post" enctype="multipart/form-data">
+		token:<input type="text" name="token" value="${token }" readonly="readonly"><br>
 		文件：<input type="file" name="file"><br>
 		备注：<input type="text" name="memo"><br>
 		<input type="submit" value="上传">&nbsp;&nbsp;<span id="msg" style="color: red">${message}</span><br>

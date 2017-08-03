@@ -25,7 +25,7 @@ public class IO {
 			InputStream in = new FileInputStream(file);
 			OutputStream out = new FileOutputStream("C:/Users/gaojk/Desktop/file.txt");
 			int len = 0;
-			byte[] b = new byte[1024];
+			byte[] b = new byte[8096];
 			while ((len=in.read(b))!=-1) {
 				out.write(b, 0, len);
 				System.out.write(b, 0, len);

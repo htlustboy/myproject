@@ -27,13 +27,14 @@ public class FileController {
 	@Resource
 	private FileService fileService;
 	
+	@FormData(save=true)
 	@RequestMapping("/list")
 	public String list(){
 		return "file_list";
 	}
 	
 	@RequestMapping("/upload")
-	@FormData
+	@FormData(remove=true)
 	public Resultinfo upload(Model model,@RequestParam(value="file",required=false)MultipartFile file,
 						 @RequestParam(value="memo",required=false)String memo){
 		return fileService.upload(file, memo);

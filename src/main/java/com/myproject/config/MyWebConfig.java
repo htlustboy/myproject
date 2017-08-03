@@ -17,7 +17,7 @@ public class MyWebConfig extends WebMvcConfigurerAdapter{
 	
 	@Override
 	public void addInterceptors(InterceptorRegistry registry){
-		registry.addInterceptor(new BaseHandlerInterceptor()).addPathPatterns("/*.json");
+		registry.addInterceptor(new BaseHandlerInterceptor()).addPathPatterns("/jdbc/*");
 		registry.addInterceptor(new FileUploadInterceptor()).addPathPatterns("/file/*");
 	}
 }

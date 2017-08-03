@@ -15,6 +15,9 @@
 	<h4><a href="${ base}/redis/list">redis...</a></h4>
 	<h4><a href="${ base}/i18n/list?language=1">国际化</a></h4>
 	<h4><a href="${ base}/shiro/list">shiro配置</a></h4>
+	<h4><a href="${ base}/excel/export">Excel导出</a></h4>
+	<h4><a href="${ base}/mail/list">邮件收发</a></h4>
+	<h4><a href="${ base}/editor/list">ueditor</a></h4>
 	<h4><a href="${ base}/toerror">error</a></h4>
 </body>
 </html>
